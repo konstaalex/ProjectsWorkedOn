@@ -1,2 +1,3 @@
 # ProjectsWorkedOn
-documentation on my expereince regarding studying and applu=ying software engineering tehniques
+
+documentation on my expereince regarding studying and applying software engineering tehniques
