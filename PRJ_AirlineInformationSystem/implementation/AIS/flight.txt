@@ -1,0 +1,20 @@
+FlightData{flightNumber='FNO234', departure='Vilnius', arrival='Amsterdam', departureDate=2023-03-23, arrivalDate=2023-03-23, totalSeats=123}
+FlightData{flightNumber='FMN675', departure='Vilnius', arrival='Kaunas', departureDate=2023-03-24, arrivalDate=2023-03-24, totalSeats=123}
+FlightData{flightNumber='FNO234', departure='Vilnius ', arrival='Madrid', departureDate=2023-03-25, arrivalDate=2023-03-25, totalSeats=1213}
+FlightData{flightNumber='SJH', departure='dfsdf', arrival='sdf', departureDate=2023-03-24, arrivalDate=2023-03-24, totalSeats=12123}
+FlightData{flightNumber='FNO123', departure='Vilnius ', arrival='Amsterdam', departureDate=2023-03-26, arrivalDate=2023-03-26, totalSeats=123}
+FlightData{flightNumber='gtgy', departure='thbhtt', arrival='tbhb', departureDate=2023-03-23, arrivalDate=2023-03-23, totalSeats=345}
+FlightData{flightNumber='jgifgdf', departure='dfgfg', arrival='dfgdfg', departureDate=2023-03-10, arrivalDate=2023-03-16, totalSeats=13123}
+FlightData{flightNumber='fdf', departure='grgr', arrival='dfgdg', departureDate=2023-03-23, arrivalDate=2023-03-23, totalSeats=123}
+FlightData{flightNumber='dgfg', departure='dfsd', arrival='dgfgfd', departureDate=2023-03-23, arrivalDate=2023-03-23, totalSeats=23434}
+FlightData{flightNumber='JFSD', departure='Dukstas', arrival='Dukstas', departureDate=2023-03-24, arrivalDate=2023-03-24, totalSeats=123}
+FlightData{flightNumber='df', departure='dsfd', arrival='sdf', departureDate=2023-03-24, arrivalDate=2023-03-24, totalSeats=23}
+
+FlightData{flightNumber='FN345', departure='Vilnius', arrival='Kaunas', departureDate=2023-03-26, arrivalDate=2023-03-26, totalSeats=123}
+FlightData{flightNumber='sdf', departure='sdf', arrival='sdf', departureDate=2023-03-09, arrivalDate=2023-03-02, totalSeats=23}
+
+FlightData{flightNumber='1', departure='12:00', arrival='14:00', departureDate=2023-03-27, arrivalDate=2023-03-27, totalSeats=100}
+FlightData{flightNumber='1', departure='ams', arrival='ams', departureDate=2023-03-27, arrivalDate=2023-03-27, totalSeats=100}
+FlightData{flightNumber='-1', departure='ams', arrival='ams', departureDate=2023-03-27, arrivalDate=2023-03-27, totalSeats=100}
+FlightData{flightNumber='1', departure='ams', arrival='ams', departureDate=2023-03-20, arrivalDate=2023-03-20, totalSeats=100}
+

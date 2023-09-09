@@ -1,0 +1,136 @@
+/* General styling */
+* {
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-smoothing-type: lcd;
+}
+
+/* Style the root container */
+.root {
+    -fx-background-color: #f2f2f2;
+}
+
+/* Style the Menu */
+#meniu {
+    -fx-spacing: 10;
+    -fx-padding: 40px;
+    -fx-background-color: linear-gradient(to bottom, #06234b, #0a3d73);
+    -fx-alignment: center;
+}
+
+/* Menu items */
+#meniu-item {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-padding: 8px;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Style the VBox */
+#createNewAirportContent {
+    -fx-background-color: #f2f2f2; /* Light gray background */
+    -fx-padding: 40px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 5);
+}
+
+/* Style the heading Label */
+#headingLabel {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-margin-bottom: 20px;
+    -fx-text-fill: #404040; /* Dark gray color */
+}
+
+/* Style the Labels inside the GridPane */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-align: center;
+    -fx-text-fill: #5c5c5c; /* Gray color */
+    -fx-padding: 5px 0;
+}
+
+/* Style the TextFields and ComboBox */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 1, 0, 0, 1);
+}
+
+/* Style the TextField and ComboBox on focus */
+.text-field:focused {
+    -fx-border-color: #0077cc; /* Blue color */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 119, 204, 0.5), 5, 0, 0, 5);
+}
+
+
+    /* Style the Submit Button */
+#submitButton, #submitButton1 {
+    -fx-font-size: 16px;
+    -fx-padding: 5px 25px;
+    -fx-background-color: #0077cc; /* Blue color */
+    -fx-text-fill: white; /* White text color */
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 2, 0, 0, 2);
+}
+
+/* Style the Submit Button on hover */
+#submitButton, #submitButton1:hover {
+    -fx-background-color: #005fa3; /* Darker blue color */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 4, 0, 0, 4);
+}
+
+.calendar-view {
+    -fx-background-color: #f4f4f4;
+    -fx-font-size: 14pt;
+}
+
+.calendar-view .calendar-header {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #ccc;
+    -fx-border-width: 0 0 1 0;
+}
+
+.calendar-view .calendar-header-label {
+    -fx-text-fill: #333;
+}
+
+.calendar-view .day-cell {
+    -fx-border-color: #ccc;
+    -fx-border-width: 0.5 0.5 0 0;
+}
+
+.calendar-view .day-cell:hover {
+    -fx-background-color: #eee;
+}
+
+.calendar-view .day-cell .cell-date {
+    -fx-font-size: 12pt;
+}
+
+.calendar-view .day-cell .cell-appointment {
+    -fx-background-color: #3186a9;
+    -fx-border-color: #297da8;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-text-fill: white;
+}
+
+.calendar-view .day-cell .cell-appointment:hover {
+    -fx-background-color: #297da8;
+}
+
+.calendar-view .day-cell .cell-appointment-empty {
+    -fx-background-color: #f4f4f4;
+}
+
+.calendar-view .day-cell .cell-appointment-empty:hover {
+    -fx-background-color: #eee;
+}
+

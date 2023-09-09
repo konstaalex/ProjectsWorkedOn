@@ -1,0 +1,51 @@
+CREATE TABLE airports (
+    name VARCHAR(255) primary key NOT null,
+    gates INTEGER NOT NULL,
+    timezone VARCHAR(255) NOT NULL,
+    latitude DOUBLE precision NOT NULL,
+    longitude DOUBLE precision NOT NULL
+);
+
+CREATE TABLE airplanes (
+    airplane_model VARCHAR(255)  NOT NULL,
+    airplane_number_registration VARCHAR(225) primary key NOT NULL,
+    fuel_consumption_per_km DOUBLE precision NOT NULL,
+    number_of_total_seats INTEGER NOT null,
+    number_of_business_class_seats INTEGER NOT NULL,
+    number_of_extra_legroom_seats INTEGER NOT NULL,
+    capacity INTEGER not null
+);
+
+CREATE TABLE flights (
+    flight_number VARCHAR(255) NOT NULL,
+    departure_name VARCHAR (225) NOT NULL REFERENCES airports(name),
+    arrival_name VARCHAR(225) NOT NULL REFERENCES airports(name),
+    departure_date DATE NOT NULL,
+    departure_time TIME NOT NULL,
+    arrival_date DATE not null,
+    arrival_time TIME not null,
+    airplane_registration_number VARCHAR(225) NOT NULL REFERENCES airplanes(airplane_number_registration),
+    gate INTEGER NOT null,
+    status VARCHAR(255) NOT NULL DEFAULT 'Scheduled',
+    PRIMARY KEY (flight_number, departure_date)
+);
+
+
+
+CREATE TABLE seats (
+    id SERIAL PRIMARY KEY,
+    seat_number INTEGER NOT NULL,
+    food_service BOOLEAN NOT NULL,
+    extra_legroom BOOLEAN NOT NULL,
+    extra_luggage BOOLEAN NOT NULL,
+    airplane_registration_number VARCHAR(225) NOT NULL REFERENCES airplanes(airplane_number_registration)
+);
+
+
+drop table flights;
+drop table airports;
+drop table seats;
+drop TABLE airplanes;
+
+
+

@@ -1,91 +1,33 @@
 # PRJ2 - Airline Information System
 
-The purpose of this repository is to document our project work.
+The purpose of this repository is to document your project work.
+
+***Your group is responsible for the repository structure and content***, but we created some template folders for you. You do not have to stick to this.
+
+## Documentation
+
+Github documentation is part of the communication grade for project 2 (PRJ23). Therefore it is important to make sure to write proper documentation and to write that in a format that can be rendered by Github.
+Github supports a multitude of languages for this [purpose](https://github.com/github/markup), however you are only allowed to use:
+
+- [Markdown](https://www.markdownguide.org/) - Have a look at the [Github flavored markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [AsciiDoc](https://asciidoc-py.github.io/index.html) - Have a look at the [AsciiDoctor cheatsheet](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/)
+
+## Diagrams
+
+In the AADE course you will learn how to develop diagrams with the use of [Visual Paradigm](https://www.visual-paradigm.com/). You are free to use this program also for the diagrams for project 2.
+
+**However** Visual Paradigm creates `binary` files which don't play nice with version control systems (VCS) such as Git. We therefore also recommend to have a look at the following ways of creating diagrams, based on text files (which is what VCSs excel at).
+
+- [PlantUML](https://plantuml.com/) - PlantUml let's you easily create unified modeling languages (UML) diagrams in a text based manner. There is a [VSCode extension available](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) for live previews and exporting of diagrams.
+- [Diagrams.net](https://app.diagrams.net/) - Drag and drop editor that works in the browser. There is also a [VSCode extension available](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio). Have a look at [this guide](https://github.com/philip-gai/github-drawio-demo) on how to make sure your images are always up-to-date.
+
+Examples of these diagrams can be found in the [design](/design) directory.
+
+> :warning: **Make sure there is always an image available of all diagrams** (preferably as SVG)
 
 ## Structure
 
- - [Analysis](/analysis) - For all analysis artefacts
-   - [User Stories](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/analysis/User%20stories.md)
-   - [Data Dictionary](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/analysis/DataDictionary.md)
-   - [Domain Model](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/analysis/Domain%20model)
-   - [Use Case Descriptions](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/analysis/Use%20Cases/UseCaseDescription.md)
-   - [Use Case Diagram](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/analysis/Use%20Cases/Use%20Case%20Diagram4.jpg)
-   - [Test Scenarios](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/analysis/Use%20Cases/TestScenarios.md)
-   - [Activity Diagram](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/analysis/ActivityDiagrams/Activity%20Diagram.svg)
- - [Design](/design) - For all design artefacts
-   - [Class Diagram](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/design/Class%20Diagram/class%20diagramregisterFlight.jpeg)
-   - [Sequence Diagrams](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/design/Sequence%20Diagrams)
-   - [Database Design](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/design/Database)
- - [Implementation](/implementation) - For the implementation of the Airline Information System
-   - [Assembler](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/implementation/AIS-G13/Assembler)
-   - [BusinessLogic](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/implementation/AIS-G13/BusinessLogic)
-   - [GUI](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/implementation/AIS-G13/GUI)
-   - [Persistence](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/tree/main/implementation/AIS-G13/Persistence)
- - [Project Management](/project-management) - For all project management related artefacts, e.g. meetings outcomes, retrospectives, screenshots, minutes, planning.
- - [Project Board](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/projects/1)
-
-
-## Project 2 case: flight ticket sales  
-This document is to be used as a starting point for your analysis process. On purpose, it 
-only provides a high-level overview on the requirements. With the support of your tutor, 
-you need to further refine your requirements for this project. 
- 
-Within this project you are going to work for an airline company. In a nutshell, you need 
-to build an application to support the sales of flight tickets. 
- 
-First, a sales officer needs to be able to register upcoming flights and start the sales 
-process for registered flights. Additionally, it must be possible to enable temporary 
-price reductions. Discounts can be static (e.g. 10% price reduction for a limited period of 
-time), as well as dynamic (e.g. based on the number of sun hours at the destination, on 
-the day before the booking is made – this needs to be retrieved from an external API, 
-feel free to choose one). 
- 
-Second, your future application needs to allow sales employees to lookup available 
-flights and create bookings for one or more persons for a specific flight. A booking can 
-have (paid) options concerning extra legroom, food, luggage and seats chosen. Prices 
-need to be calculated by the software and depend on the chosen options, class, 
-availability of seats in that class, applicable discounts and the number of days left before 
-the flight departs. You can assume another application is used for the payment process. 
-Please note that the airline company works with multiple sales employees. Hence, the 
-application needs to cope with concurrent users, potentially trying to book limited seats 
-for the same flight. 
- 
-Finally, sales managers are only going to love your work if you include a management 
-dashboard.  The dashboard needs to present important management key performance 
-indicators. For example, for each route sales managers want to view total revenue 
-numbers, number of tickets sold in each class, and statistics on all options sold. 
-
-**Summary**
-
-Within the employees we have several roles as employees.
--	Sales officer
--	Sales employee
--	Sales manager
-	___
- Sales officer:
- 
-A Sales Officer should be able to:
-*	Register upcoming flights.
-*	Start the sales process for registered flights
-*	Enable temporary price reduction. 
-    * Discount can be static (E.g. 10% reduction for limited time)
-    * Discount can be dynamic (E.g. based on number of sun hours at the destination, on the day before the booking is made – this needs to be retrieved from an external API.)
-___
- Sales Employee:
- 
-A Sales Employee should be able to:
-*	Lookup available flights
-*	Create bookings for one or more persons.
-  *	Booking can have (paid) options like, extra legroom, food, luggage and seats chosen.
-  *	Prices need to be calculated by the software and depend on the chosen options, class, availability of the seats in that class, applicable discounts and the number of days left before the flight departs.
-*	There are multiple Sales Employees. The application needs to cope with concurrent users, potentially trying to book limited seats for the same flight.
-___
-Sales Manager:
-
-A Sales Manager needs:
-*	A management dashboard.
-*	Important management key performance indicators
-*	for each route, sales managers want to view total revenue numbers, number of tickets sold in each class, and statistics on all options sold.
-
-
-GO TO [Analysis](/analysis) 
+- [Project Management](/project-management) - For all project management related artefacts, e.g. meetings outcomes, retrospectives, screenshots, minutes, planning.
+- [Analysis](/analysis) - For all analysis artefacts
+- [Design](/design) - For all design artefacts
+- [Implementation](/implementation) - For the implementation of the Airline Information System

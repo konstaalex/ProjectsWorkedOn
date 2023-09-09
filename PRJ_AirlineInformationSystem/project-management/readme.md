@@ -2,8 +2,18 @@
 
 This directory is for all the project management (PM) artefacts.  
 
-The project board can be foubd [here](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/projects/1)
-___
+Use the build-in GitHub project board.
 
+![project board](images/project-board.jpg)
 
-The project charter and work breakdown structure can be found   [here](https://github.com/FontysVenlo/prj2-2022-prj2-2022-g13/blob/main/project-management/Project%20Charter.docx)
+Create a Basic kanban board:
+
+![basic kanban board](images/project-board-kanban.jpg)
+
+This is your task board then:
+
+![task board](images/task-board.jpg)
+
+Important that you "convert" your notes to issues as these have more options:
+
+![convert to issues](images/convert-issues.jpg)

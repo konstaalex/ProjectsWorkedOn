@@ -1,0 +1,6 @@
+datarecords/FlightData.class
+datarecords/SeatData.class
+datarecords/AirplaneData.class
+module-info.class
+datarecords/GateData.class
+datarecords/AirportData.class

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import org.controlsfx.control.GridCell?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import com.calendarfx.view.CalendarView?>
+
+
+
+<?import javafx.scene.layout.RowConstraints?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="700"
+            prefWidth="1000"
+            fx:controller="gui.SalesOfficerController"
+            stylesheets="@styles-registerflight.css">
+
+
+    <top>
+        <VBox alignment="TOP_LEFT" spacing="10" style="-fx-padding: 10px;-fx-background-color: #CCCCCC;">
+            <Button text="Back" onAction="#onBackButtonClick" />
+        </VBox>
+    </top>
+
+    <left>
+        <VBox fx:id="meniu" styleClass="meniu">
+            <Label text="MENU" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 0 0 10 0;" />
+            <Separator />
+            <Button fx:id="registerAirportButton" graphicTextGap="5" onAction="#showCreateNewAirportContent"
+                    minWidth="180" minHeight="40" maxWidth="150" maxHeight="40">
+                <graphic>
+                    <ImageView fitHeight="20" fitWidth="20">
+<!--                        <Image url="@airport-icon.png" />-->
+                    </ImageView>
+                </graphic>
+                <text> Register New Airport  </text>
+            </Button>
+
+            <Button fx:id="registerAirplaneButton" graphicTextGap="5" onAction="#showCreateNewAirplaneContent"
+                    minWidth="180" minHeight="40" maxWidth="150" maxHeight="40">
+                <graphic>
+                    <ImageView fitHeight="20" fitWidth="20">
+                        <!--                        <Image url="@airport-icon.png" />-->
+                    </ImageView>
+                </graphic>
+                <text> Register New Airplane  </text>
+            </Button>
+
+
+
+            <Button fx:id="createNewFlightButton" graphicTextGap="5" onAction="#showCreateNewFlightContent"
+                    minWidth="180" minHeight="40" maxWidth="150" maxHeight="40">
+                <graphic>
+                    <ImageView fitHeight="20" fitWidth="20">
+<!--                        <Image url="@plane-icon.png" />-->
+                    </ImageView>
+                </graphic>
+                <text>Create New Flight </text>
+            </Button>
+            <Button fx:id="seeAllFlights" graphicTextGap="5" onAction="#showAllFlightsContent"
+                    minWidth="180" minHeight="40" maxWidth="150" maxHeight="40">
+                <graphic>
+                    <ImageView fitHeight="20" fitWidth="20">
+<!--                        <Image url="@flight-list-icon.png" />-->
+                    </ImageView>
+                </graphic>
+                <text>Confirmed Flights</text>
+            </Button>
+
+            <Button fx:id="calendarFLight" graphicTextGap="5" onAction="#showCalendarFLightContent"
+                    minWidth="180" minHeight="40" maxWidth="150" maxHeight="40">
+                <graphic>
+                    <ImageView fitHeight="20" fitWidth="20">
+                        <!--<Image url="@flight-list-icon.png"/>-->
+                    </ImageView>
+                </graphic>
+                <text>Flight Calendar</text>
+            </Button>
+
+        </VBox>
+    </left>
+
+    <center>
+
+    <!--register new flight-->
+        <StackPane fx:id="contentPane">
+            <VBox fx:id="createNewFlightContent" alignment="CENTER" spacing="10" style="-fx-padding: 40px;" visible="false">
+                <Label text="Create New Flight" style="-fx-font-size: 16; -fx-font-weight: bold; "/>
+                <Label text=""/>
+
+                <GridPane hgap="100" vgap="10" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0"/>
+                    </columnConstraints>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Flight Number:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="flightNumberField" styleClass="text-field" maxWidth="200" promptText="Enter Flight Number" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Airplane:"   styleClass="label"/>
+                    </HBox>
+                    <ComboBox fx:id="airplaneComboBox" styleClass="combo-box" maxWidth="200" promptText="Select Airplane" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <Label text="Departure Airport:"  styleClass="label"/>
+                    </HBox>
+                    <ComboBox fx:id="departureComboBox" styleClass="combo-box" maxWidth="200" promptText="Select Departure Airport" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <Label text="Arrival Airport:" styleClass="label"/>
+                    </HBox>
+                    <ComboBox fx:id="arrivalComboBox" styleClass="combo-box" maxWidth="200" promptText="Select Arrival Airport" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                        <Label text="Date:"  styleClass="label"/>
+                    </HBox>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                        <Label text="Date:" styleClass="label"/>
+                    </HBox>
+                    <DatePicker fx:id="departureDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        <Label text="Time :" styleClass="label"/>
+                    </HBox>
+                    <HBox GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <TextField fx:id="hourField" maxWidth="40" />
+                        <Label text=" : "/>
+                        <TextField fx:id="minuteField" maxWidth="40" />
+                    </HBox>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                        <Label text="Set Period:" styleClass="label"/>
+                    </HBox>
+                    <CheckBox fx:id="dateRangeCheckbox" text="Specify date range" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                    <VBox fx:id="dateRangeBox" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7" spacing="10" visible="false">
+                        <HBox>
+                            <Label text="Scheduling Period:" styleClass="label" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <VBox alignment="CENTER_LEFT" spacing="5">
+                                <Label text="End Date:" styleClass="label" />
+                                <DatePicker fx:id="endPeriodDatePicker" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+
+                </GridPane>
+
+                <Button fx:id="createFlight" text="Create" onAction="#onCreateFlightButtonClick"/>
+            </VBox>
+
+            <VBox fx:id="createNewAirportContent" alignment="CENTER" spacing="10" style="-fx-padding: 40px;"  styleClass="createNewAirportContent" visible="false">
+                <Label text="Register New Airport" fx:id="headingLabel" styleClass="headingLabel" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+                <Label text=""/>
+
+                <GridPane fx:id="gridPane"  styleClass="gridPane" hgap="5" vgap="15" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0"/>
+                    </columnConstraints>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Airport Name:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="airportName" styleClass="text-field" maxWidth="200" promptText="Enter Airport Name" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Number of Gates:"   styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="numberOfGates" styleClass="text-field" maxWidth="200" promptText="Enter Number of Gates" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <Label text="Timezone:"  styleClass="label"/>
+                    </HBox>
+                    <ComboBox fx:id="timezoneComboBox" maxWidth="200" promptText="Select Timezone" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <Label text="Latitude:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="latitude" styleClass="text-field" maxWidth="200" promptText="Enter Latitude" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                        <Label text="Longitude:"  styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="longitude" styleClass="text-field" maxWidth="200" promptText="Enter Longitude" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                </GridPane>
+                <Button text="Submit" fx:id="submitButton" style="-fx-font-size: 16; -fx-padding: 5 5;" onAction="#onCreateAirportButtonClick"/>
+            </VBox>
+
+            <!--Calendar view -->
+
+            <VBox fx:id="createNewFlightCalendarContent" alignment="CENTER" spacing="10" style="-fx-padding: 40px;"  styleClass="createNewAirportContent" visible="false">
+
+                <GridPane fx:id="calendar" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
+                    <CalendarView fx:id="calendarView" styleClass="calendar-view"/>
+                </GridPane>
+
+            </VBox>
+
+<!--    airplane content-->
+
+            <VBox fx:id="createNewAirplaneContent" alignment="CENTER" spacing="10" style="-fx-padding: 40px;" styleClass="createNewAirportContent" visible="false">
+                <Label text="Create New Airplane"   style="-fx-font-size: 24; -fx-font-weight: bold;" />
+
+                <GridPane  hgap="10" vgap="15" alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0"/>
+                    </columnConstraints>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Airplane Model:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="airplaneModelField" styleClass="text-field" maxWidth="200" promptText="Airplane model" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Registration number:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="airplaneRegistrationNumber" styleClass="text-field" maxWidth="200" promptText="Airplane ID" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                        <Label text="Fuel Consumption per Km:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="fuelConsumptionField" styleClass="text-field" maxWidth="200" promptText="Fuel Consumption per Km" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                        <Label text="Total Seats:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="totalSeatsField" styleClass="text-field" maxWidth="200" promptText="Total Seats" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                        <Label text="Number of Business Class Seats:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="businessClassSeatsField" styleClass="text-field" maxWidth="200" promptText="Business Class Seats" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                        <Label text="Number of Extra Legroom Seats:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="extraLegroomSeatsField" styleClass="text-field" maxWidth="200" promptText="Extra Legroom Seats" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                    <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                        <Label text="Luggage Capacity:" styleClass="label"/>
+                    </HBox>
+                    <TextField fx:id="luggageCapacityField" styleClass="text-field" maxWidth="200" promptText="Luggage Capacity" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                </GridPane>
+                <Button text="Submit" fx:id="submitButton1" onAction="#onCreateAirplaneButtonClick"/>
+            </VBox>
+
+
+            <VBox fx:id="showAllFLightsContentVar" alignment="CENTER" spacing="10" style="-fx-padding: 40px;" visible="false">
+                <Label text="Flight List" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <TableView fx:id="flightTableView" prefWidth="600" prefHeight="600">
+                    <columns>
+                        <TableColumn fx:id="flightNumberColumn" text="Flight Number" prefWidth="100"/>
+                        <TableColumn fx:id="departureColumn" text="Departure" prefWidth="100"/>
+                        <TableColumn fx:id="arrivalColumn" text="Arrival" prefWidth="100"/>
+                        <TableColumn fx:id="departureDateColumn" text="Departure Date" prefWidth="100"/>
+                        <TableColumn fx:id="arrivalDateColumn" text="Arrival Date" prefWidth="100"/>
+                        <TableColumn fx:id="totalSeatsColumn" text="Total Seats" prefWidth="100"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+            </StackPane>
+    </center>
+
+    <right>
+        <VBox  alignment="CENTER" spacing="10" style="-fx-padding: 20px;">
+        </VBox>
+    </right>
+
+</BorderPane>
