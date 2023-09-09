@@ -1,0 +1,289 @@
+---
+title: "student performance2.0"
+author: "Alex Constantinescu & Matei Grosu"
+date: "1/8/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+## Introduction
+
+We have taken a data set on the student performance on exams regarding math,reading and writing scores.
+The data set is taken from  https://www.kaggle.com/spscientist/students-performance-in-exams
+We have searched for a data set that is already cleaned.
+The data set provides information on the student performance at reading writing and math exams together with data about gender, race,parental education,lunch and test preparation . In this report we will explore the data and analyse it.Specifically, we'll use data visualisation and transformation to explore the choosen data set.
+
+Question:
+1.What type of variation occurs within the variables? 
+
+2.What type of covariation occurs between the variables?
+
+
+## Import data
+
+First, we have to import the data set into the rStudio environment so that we can start explore the data and analyse it.
+```{r}
+stPerform <- read_csv("/Users/alex/Desktop/UNIVERSITY/SEM3/DASC/StudentsPerformance.csv")
+stPerform
+```
+## Displaying the internal structure of the data frame:
+```{r}
+str(stPerform)
+```
+
+## Some descriptive information of the data:
+```{r}
+summary(stPerform)
+```
+From the descriptive information of the data we understood of what types are the data's variables. We have continous variables(math score, reading score and writing score) and categorical variables(gender,race/ethnicity, parental level of education, lunch, test preparation). Also, we want to search for missing values and than to rename the column names to be easier to work with
+
+## Trying to tidy the data
+The column names are not that good to work with so we decided to rename them in order to be easier to work with.
+```{r}
+colnames(stPerform)<-c("Gender","Race","Parental_Education","Lunch","Test_Prep","Math_Score","Reading_Score","Writing_Score")
+head(stPerform)
+```
+We want to find out if there are any missing values to deal with
+Dealing with missing values:
+
+
+Count missing values:
+```{r}
+sum(is.na(stPerform))
+```
+We do not have missing values.
+
+
+
+## Let's create a new column for the average score at all subjects
+
+```{r}
+stPerformAvg <- mutate(stPerform,
+       avgScore = (Math_Score+Reading_Score+Writing_Score)/3)
+stPerformAvg
+```
+## Data Viualization:
+
+# we want to see how females did in there exams, let's create a new table only with the females:
+```{r}
+fPerform <-filter(stPerformAvg,Gender=="female")
+fPerform
+```
+# let's see the distribution of scores for females
+```{r}
+ggplot(data = fPerform) +
+  geom_histogram(mapping = aes(x = Math_Score), binwidth = 0.5)
+```
+## Let's do the same thing for the males,so let's create a table only with males
+```{r}
+mPerform <-filter(stPerformAvg,Gender=="male")
+mPerform
+```
+
+# let's see the distribution of scores for males
+```{r}
+ggplot(data = mPerform) +
+  geom_histogram(mapping = aes(x = Math_Score), binwidth = 0.5)
+```
+
+```{r}
+ggplot(data = stPerformAvg, mapping = aes(x = Math_Score, colour = Gender)) +
+  geom_freqpoly(binwidth = 10)
+```
+Creating a ggplot to visualize the relationship between math scores and average scores related to gender. 
+```{r}
+ggplot(data = stPerformAvg) +
+  geom_point(mapping = aes(x =Math_Score , y =avgScore, color=Gender))
+```
+We observe that females tend to have higher scores that males. There is a pozitive relationship between reading and math score
+
+More plots:
+```{r}
+ggplot(data = stPerform) +
+  geom_point(mapping = aes(x =Math_Score , y =Reading_Score, color=Race))
+```
+This plot does not help us too much as it is not that clear the distribution of race groups.
+
+Let's try to visualize the distribution of the races 
+```{r}
+ggplot(data = stPerform) +
+  geom_bar(mapping = aes(x = Race))
+```
+We observe that the majority of people is from the group c.
+
+
+## Let's see how the parental educatian affects the scores of the students
+
+```{r}
+ggplot(data = stPerformAvg) +
+  geom_point(mapping = aes(x =Math_Score , y =avgScore, color=Gender ))+
+  facet_wrap(~ Parental_Education,nrow = 2)
+```
+
+## Let's see the distribution of average scores:
+```{r}
+ggplot(data = stPerformAvg) +
+  geom_histogram(mapping = aes(x = avgScore), binwidth = 0.5)
+```
+
+
+```{r}
+ggplot(data = stPerform) +
+  geom_point(mapping = aes(x =Math_Score , y =Reading_Score, color=Lunch))
+```
+
+We see that the students that had a lunch before exams did better
+Students performance related to parents education:
+We assume that higher the education parents have higher the students grades are
+
+## Plot exam scores by gender to determinate if there is a different score tendency for each gender
+
+#Math scores by gender: 
+
+```{r}
+pl <- ggplot(stPerformAvg, aes(Math_Score)) + geom_histogram(binwidth=5, color="gray", aes(fill=Gender))
+pl <- pl + xlab("Math Scores") + ylab("Gender") + ggtitle("Math Scores by Gender")
+pl
+
+```
+#Reading scores by gender: 
+```{r}
+pl1 <- ggplot(stPerformAvg, aes(Reading_Score)) + geom_histogram(binwidth=5, color="gray", aes(fill=Gender))
+pl1 <- pl1 + xlab("Reading Scores") + ylab("Gender") + ggtitle("Reading Scores by Gender")
+pl1
+```
+# Writing scores by gender:
+```{r}
+pl2 <- ggplot(stPerformAvg, aes(Writing_Score)) +  geom_histogram(binwidth=5, color="gray", aes(fill=Gender))
+pl2 <- pl2 + xlab("Writing Scores") + ylab("Gender") + ggtitle("Writing Scores by Gender")
+pl2
+```
+
+# Average score by gender:
+```{r}
+pl3 <- ggplot(stPerformAvg, aes(avgScore)) +  geom_histogram(binwidth=5, color="gray", aes(fill=Gender))
+pl3 <- pl2 + xlab("Average Scores") + ylab("Gender") + ggtitle("Average Scores by Gender")
+pl3
+```
+## Let's createcreate some boxplots in order to provide some measures of central tendency and visual of outliers:
+#Boxplot of writing scores and test preparation by gender:
+```{r}
+
+bx <- ggplot(stPerformAvg, aes(Gender, Writing_Score, color = Test_Prep))
+bx <- bx + geom_boxplot()
+bx <- bx + ggtitle("Writing scores by Gender Boxplot")
+bx <- bx + xlab("Gender") + ylab("Writing Scores")
+bx
+```
+#Boxplot of Math scores and test preparation by gender:
+```{r}
+bx1 <- ggplot(stPerformAvg, aes(Gender, Math_Score, color = Test_Prep))
+bx1 <- bx1 + geom_boxplot()
+bx1 <- bx1 + ggtitle("Math scores by Gender Boxplot")
+bx1 <- bx1 + xlab("Gender") + ylab("Math Scores")
+bx1
+```
+#Boxplot of Reading scores and test preparation by gender:
+```{r}
+bx2 <- ggplot(stPerformAvg, aes(Gender, Reading_Score, color = Test_Prep))
+bx2 <- bx2 + geom_boxplot()
+bx2 <- bx2 + ggtitle("Reading scores by Gender Boxplot")
+bx2 <- bx2 + xlab("Gender") + ylab("Reading Scores")
+bx2
+```
+#Boxplot of Average scores and test preparation by gender:
+```{r}
+bx3 <- ggplot(stPerformAvg, aes(Gender, avgScore, color = Test_Prep))
+bx3 <- bx3 + geom_boxplot()
+bx3 <- bx3 + ggtitle("Average scores by Gender Boxplot")
+bx3 <- bx3 + xlab("Gender") + ylab("Average Scores")
+bx3
+```
+
+After visualizing and analizing the boxplots we observed that students who completed the test preparation has better scores in all three exams.
+
+Moreover, it is shown that male students has better scores in math, while female students have in reading and writing.
+
+There are outliers in all three exams.
+
+In average female students did better than male students, and in average students who completed the test preparation did better than the ones who did not.
+
+
+
+## Linear regression(Alex Constantinescu):
+
+```{r}
+linearmodel <- lm(Math_Score~avgScore, data= stPerformAvg)
+summary(linearmodel)
+```
+## Interpretation of the linear regression output:
+```{r}
+plot(linearmodel)
+```
+
+
+##Linear regression model: assumptions
+A linear regression makes certain assumptions about the 
+data, which you must check:
+
+1. Homoscedasticity of errors: the variance is homogenous
+
+2. Normality: Errors are normally distributed
+
+3. Independence of observations: data was collected using 
+valid sampling methods, there are no hidden biases or 
+relationships 
+
+4. The relationship between X and Y is linear (i.e. the line is 
+straight, not curved)
+
+## Residual analysis:
+
+#1.Residual vs Fitted: Linearity assumption
+
+This plot shows whether there are non-linear patterns.
+The red line follows the doted one so it is a perfect scenario.
+The residuals appear to be equally spread.
+
+#2.Q-Q(quantitive-quantile):Normality assumption
+This plot shows if the residuals are normally distributed. If they are, they follow the straight line in this plot.
+We see here that apart from some outliers, the values fall on or around the straight line
+
+#3.  Scale-Location: Homoscedasticity assumption:
+
+This plot tests for homoscedasticity, i.e. if the residuals have equal variance along the regression line.
+
+In this plot, we have a lot of cases so the variance is equlaity spreaded among the plot.
+
+#4. Residuals vs Leverage
+
+
+This plot is used to spot influential cases in the model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
